@@ -70,13 +70,17 @@ public class DashBoard extends AppCompatActivity {
     }
 
     public void removeItem() {
-        // remove house
-        houses.remove(houses.size() - 1);
+        if (!houses.isEmpty()) {
+            // remove house
+            houses.remove(houses.size() - 1);
 
-        // Update the myAdapter
-        myAdapter.notifyDataSetChanged();
+            // Update the myAdapter
+            myAdapter.notifyDataSetChanged();
 
-        // Confirm the deletion
-        Toast.makeText(this, "House Removed", Toast.LENGTH_SHORT).show();
+            // Confirm the deletion
+            Toast.makeText(this, "House Removed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Nothing to remove", Toast.LENGTH_SHORT).show();
+        }
     }
 }
