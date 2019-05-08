@@ -1,5 +1,6 @@
 package com.example.poultrygeist;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
     private RelativeLayout parentLayout ;
     private static final String TAG = "MainActivity";
     private View pointSelected = null;
+    private int buttonSize = 20;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,7 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
 
         parentLayout = (RelativeLayout) findViewById(R.id.Map);
         createButton(10,30, 1);
+        createButton(33,30, 2);
 //        Button b = new Button(this);
 //        b.setWidth(10);
 //        b.setHeight(10);
@@ -50,12 +53,12 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
     }
     void createButton(int x, int y, int id) {
         Button b = new Button(this);
-        b.setWidth(10);
-        b.setHeight(10);
-        b.setBackgroundColor((int)R.color.colorPrimary);
+        b.setWidth(buttonSize);
+        b.setHeight(buttonSize);
+        b.setBackgroundColor(Color.RED);
         b.setId((int) 1);
         RelativeLayout.LayoutParams rel_btn = new RelativeLayout.LayoutParams(
-                50, 50);
+                buttonSize, buttonSize);
         rel_btn.leftMargin = x;
         rel_btn.topMargin = y;
         Log.d(TAG, "createButton: " + b.getId());
