@@ -1,5 +1,7 @@
 package com.example.poultrygeist;
 
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,12 +21,16 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
     private RelativeLayout parentLayout ;
     private static final String TAG = "MainActivity";
     private View pointSelected = null;
-    private int buttonSize = 20;
+    private int buttonSize = 50;
+    private ChickenViewModel viewModel;
+    private PoultryHouseViewModel houseModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_view);
 
+        viewModel = ViewModelProviders.of(this).get(ChickenViewModel.class);
+        houseModel = ViewModelProviders.of(this).get(PoultryHouseViewModel.class);
         parentLayout = (RelativeLayout) findViewById(R.id.Map);
         createButton(10,30, 1);
         createButton(33,30, 2);
@@ -110,6 +116,10 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
                 ((ViewGroup)(pointSelected.getParent())).removeView(pointSelected);
                 pointSelected = null;
                 Log.d(TAG, "onMenuItemClick: Chicken Removed");
+                aHouse();
+                 //aChicken();
+                Log.d(TAG, "onMenuItemClick: Count = " + countChickens());
+
                 return true;
 
             case R.id.Cancel:
@@ -120,4 +130,18 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
         }
 
     }
+
+    public void aChicken() {
+        viewModel.AddChicken(new Chicken(0, 0, 1));
+
+    }
+
+    public void aHouse() {
+        houseModel.AddHouse(new PoultryHouse(2,20,30));
+    }
+
+    public int countChickens() {
+        return viewModel.chickenCount(1);
+    }
+
 }
