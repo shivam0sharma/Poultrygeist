@@ -62,9 +62,9 @@ public class ChickenViewModel extends AndroidViewModel {
             return null;
         }
     }
-    static int count = 0;
+    static int count = -1;
     public int chickenCount(int HouseID) {
-        count = 0;
+        //count = 0;
         new getCountAsyncTask(appDatabase).execute(HouseID);
         return count;
     }

@@ -116,7 +116,7 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
                 ((ViewGroup)(pointSelected.getParent())).removeView(pointSelected);
                 pointSelected = null;
                 Log.d(TAG, "onMenuItemClick: Chicken Removed");
-                aHouse();
+                //aHouse();
                  //aChicken();
                 Log.d(TAG, "onMenuItemClick: Count = " + countChickens());
 

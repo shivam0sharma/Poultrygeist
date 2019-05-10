@@ -5,14 +5,14 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {PoultryHouse.class, Chicken.class}, version = 1, exportSchema = false)
+@Database(entities = {PoultryHouse.class, Chicken.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
     public static AppDatabase getDataBase(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class,
-                    "poultry_db").build();
+                    "poultry_db").fallbackToDestructiveMigration().build();
 
         }
         return INSTANCE;
