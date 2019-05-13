@@ -1,10 +1,12 @@
-package com.example.poultrygeist;
+package com.example.poultrygeist.DB;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.poultrygeist.DB.ModelAndViews.Chicken;
 
 import java.util.List;
 
@@ -62,7 +64,7 @@ public class ChickenViewModel extends AndroidViewModel {
             return null;
         }
     }
-    static int count = -1;
+    private static int count = -1;
     public int chickenCount(int HouseID) {
         //count = 0;
         new getCountAsyncTask(appDatabase).execute(HouseID);

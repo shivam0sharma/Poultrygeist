@@ -10,15 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.poultrygeist.DB.ModelAndViews.PoultryHouseView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext;
-    private List<House> mData;
+    private List<PoultryHouseView> mData = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context mContext, List<House> mData) {
+    public RecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
-        this.mData = mData;
+        //this.mData = mData;
     }
 
     @NonNull
@@ -31,9 +34,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder myViewHolder, final int i) {
-        myViewHolder.houseCardViewInfo.setText("House # " + mData.get(i).getHouseNumber() + "\n" +
-                                                mData.get(i).getNumberOfDeadChickens() + " Dead");
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder myViewHolder, int i) {
+        final PoultryHouseView pHouse = mData.get(i);
+        myViewHolder.houseCardViewInfo.setText("House # " + pHouse.houseId + "\n" +
+                                                pHouse.numberOfChickens + " Dead");
 
         // Setup click listener
         myViewHolder.cardViewHouse.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +46,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, houseView.class);
 
                 // passing data to the house view activity
-                intent.putExtra("HouseNumber", mData.get(i).getHouseNumber());
-                intent.putExtra("NumberOfDeadChickens", mData.get(i).getNumberOfDeadChickens());
+                intent.putExtra("HouseNumber", pHouse.houseId);
+                intent.putExtra("NumberOfDeadChickens", pHouse.numberOfChickens);
                 // starting house activity
                 mContext.startActivity(intent);
             }
@@ -53,6 +57,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public void setmData(List<PoultryHouseView> mData) {
+        this.mData = mData;
+        //TODO chnage with more efficient way of changing data
+        notifyDataSetChanged();
     }
 
     public  static class MyViewHolder extends RecyclerView.ViewHolder {

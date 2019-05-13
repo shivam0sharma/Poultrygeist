@@ -1,4 +1,4 @@
-package com.example.poultrygeist;
+package com.example.poultrygeist.DB.ModelAndViews;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

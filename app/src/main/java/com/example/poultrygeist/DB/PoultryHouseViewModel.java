@@ -1,15 +1,18 @@
-package com.example.poultrygeist;
+package com.example.poultrygeist.DB;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
+import com.example.poultrygeist.DB.ModelAndViews.PoultryHouse;
+import com.example.poultrygeist.DB.ModelAndViews.PoultryHouseView;
+
 import java.util.List;
 
 public class PoultryHouseViewModel extends AndroidViewModel {
 
-    private final LiveData<List<PoultryHouse>> poultryHouseList;
+    private final LiveData<List<PoultryHouseView>> poultryHouseList;
 
     private AppDatabase appDatabase;
 
@@ -21,7 +24,7 @@ public class PoultryHouseViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<List<PoultryHouse>> getPoultryHouseList() {
+    public LiveData<List<PoultryHouseView>> getPoultryHouseList() {
         return poultryHouseList;
     }
 

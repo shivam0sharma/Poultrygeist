@@ -1,13 +1,11 @@
 package com.example.poultrygeist;
 
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+
+import com.example.poultrygeist.DB.ChickenViewModel;
+import com.example.poultrygeist.DB.ModelAndViews.Chicken;
+import com.example.poultrygeist.DB.ModelAndViews.PoultryHouse;
+import com.example.poultrygeist.DB.PoultryHouseViewModel;
 
 public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     private RelativeLayout parentLayout ;
@@ -34,35 +36,14 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
         parentLayout = (RelativeLayout) findViewById(R.id.Map);
         createButton(10,30, 1);
         createButton(33,30, 2);
-//        Button b = new Button(this);
-//        b.setWidth(10);
-//        b.setHeight(10);
-//        b.setBackgroundColor((int)R.color.colorPrimary);
-//        b.setId((int) 1);
-//        RelativeLayout.LayoutParams rel_btn = new RelativeLayout.LayoutParams(
-//                50, 50);
-//        rel_btn.leftMargin = 120;
-//        rel_btn.topMargin = 20;
-//
-//
-//        b.setLayoutParams(rel_btn);
-//
-//
-//        b.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "onClick: Button clicked");
-//            }
-//        });
-//
-//        parentLayout.addView(b);
+
     }
     void createButton(int x, int y, int id) {
         Button b = new Button(this);
         b.setWidth(buttonSize);
         b.setHeight(buttonSize);
         b.setBackgroundColor(Color.RED);
-        b.setId((int) 1);
+        b.setId( 1);
         RelativeLayout.LayoutParams rel_btn = new RelativeLayout.LayoutParams(
                 buttonSize, buttonSize);
         rel_btn.leftMargin = x;
@@ -94,8 +75,7 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-//        pointSelected.addExtraDataToAccessibilityNodeInfo();
-//        pointSelected.performAccessibilityAction()
+
         switch (item.getItemId()) {
             case R.id.Remove:
                 Log.d(TAG, "onMenuItemClick: "+ pointSelected.getId());
@@ -116,8 +96,6 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
                 ((ViewGroup)(pointSelected.getParent())).removeView(pointSelected);
                 pointSelected = null;
                 Log.d(TAG, "onMenuItemClick: Chicken Removed");
-                //aHouse();
-                 //aChicken();
                 Log.d(TAG, "onMenuItemClick: Count = " + countChickens());
 
                 return true;
