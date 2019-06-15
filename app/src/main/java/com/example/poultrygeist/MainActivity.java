@@ -27,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
     public void login() {
         Intent intent = new Intent(this, DashBoard.class);
         startActivity(intent);
+        finish();
     }
 }

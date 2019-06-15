@@ -56,13 +56,13 @@ public abstract class AppDatabase extends RoomDatabase {
             houses.insertHouse(new PoultryHouse(4, 30, 50));
 
             chickens.insertChicken(new Chicken(23,34,1));
-            chickens.insertChicken(new Chicken(23,35,1));
-            chickens.insertChicken(new Chicken(23,35,2));
-            chickens.insertChicken(new Chicken(23,35,3));
+            chickens.insertChicken(new Chicken(43,35,1));
+            chickens.insertChicken(new Chicken(53,35,2));
+            chickens.insertChicken(new Chicken(123,35,3));
             chickens.insertChicken(new Chicken(54,2,3));
-            chickens.insertChicken(new Chicken(23,78,4));
-            chickens.insertChicken(new Chicken(21,35,4));
-            chickens.insertChicken(new Chicken(67,35,4));
+            chickens.insertChicken(new Chicken(23,178,4));
+            chickens.insertChicken(new Chicken(321,35,4));
+            chickens.insertChicken(new Chicken(67,135,4));
 
 
 

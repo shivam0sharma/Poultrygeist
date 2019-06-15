@@ -1,5 +1,6 @@
 package com.example.poultrygeist.DB;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
@@ -7,6 +8,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.poultrygeist.DB.ModelAndViews.Chicken;
+import com.example.poultrygeist.houseView;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import static android.content.ContentValues.TAG;
 
 public class ChickenViewModel extends AndroidViewModel {
     private final LiveData<List<Chicken>> chickenList;
+    private static List<Chicken> chickensInAHouse = null;
 
     private AppDatabase appDatabase;
     public ChickenViewModel(Application application) {
@@ -22,6 +25,7 @@ public class ChickenViewModel extends AndroidViewModel {
         appDatabase = AppDatabase.getDataBase(this.getApplication());
 
         chickenList = appDatabase.ChickenInformation().getALLChickns();
+        chickensInAHouse = null;
     }
 
     public LiveData<List<Chicken>> getChickenList() {
@@ -84,5 +88,32 @@ public class ChickenViewModel extends AndroidViewModel {
             return null;
         }
 
+    }
+    public void getChickensInAHouse(int HouseID, houseView activity) {
+        Log.d(TAG, "getChickensInAHouse: Before task call");
+        new getChickensAsyncTask(appDatabase, activity).execute(HouseID);
+    }
+
+    private static class getChickensAsyncTask extends AsyncTask<Integer, Void, List<Chicken>> {
+        private AppDatabase db;
+        private houseView activity;
+
+
+        getChickensAsyncTask(AppDatabase appDatabase, houseView activity) {
+            db = appDatabase;
+            this.activity = activity;
+
+        }
+
+        @Override
+        protected List<Chicken> doInBackground(final Integer... params) {
+            Log.d(TAG, "doInBackground: start ");
+            return db.ChickenInformation().getAllChicensFromHouse(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(List<Chicken> chickens) {
+            activity.createLocationsOnScreen(chickens);
+        }
     }
 }

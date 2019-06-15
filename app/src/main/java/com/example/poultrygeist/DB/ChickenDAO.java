@@ -25,4 +25,7 @@ public interface ChickenDAO {
     @Query("Delete from chicken")
     void deleteAllChickens();
 
+    @Query("Select * from Chicken where ChickenHouse = :HID")
+    List<Chicken> getAllChicensFromHouse(int HID);
+
 }

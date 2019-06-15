@@ -1,7 +1,10 @@
 package com.example.poultrygeist;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,36 +17,52 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 
+import com.example.poultrygeist.DB.AppDatabase;
 import com.example.poultrygeist.DB.ChickenViewModel;
 import com.example.poultrygeist.DB.ModelAndViews.Chicken;
 import com.example.poultrygeist.DB.ModelAndViews.PoultryHouse;
 import com.example.poultrygeist.DB.PoultryHouseViewModel;
+import java.util.List;
 
 public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     private RelativeLayout parentLayout ;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "HouseView";
     private View pointSelected = null;
     private int buttonSize = 50;
-    private ChickenViewModel viewModel;
+    private ChickenViewModel viewModel = null;
     private PoultryHouseViewModel houseModel;
+    List<Chicken> listOfChickens = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_view);
-
+        Log.d(TAG, "Inside HouseView");
         viewModel = ViewModelProviders.of(this).get(ChickenViewModel.class);
         houseModel = ViewModelProviders.of(this).get(PoultryHouseViewModel.class);
-        parentLayout = (RelativeLayout) findViewById(R.id.Map);
-        createButton(10,30, 1);
-        createButton(33,30, 2);
+        Intent intent = getIntent();
+        viewModel.getChickensInAHouse(intent.getIntExtra("HouseNumber", 0), this);
 
+        parentLayout = (RelativeLayout) findViewById(R.id.Map);
+//        for(int id = 0; id < listOfChickens.size(); id++) {
+//            Chicken chick = listOfChickens.get(id);
+//            createButton(chick.getX(), chick.getY(), id);
+//        }
     }
-    void createButton(int x, int y, int id) {
+
+    public void createLocationsOnScreen(List<Chicken> chickens){
+        listOfChickens = chickens;
+        for(int id = 0; id < listOfChickens.size(); id++) {
+            Chicken chick = listOfChickens.get(id);
+            createButton(chick.getX(), chick.getY(), id);
+        }
+    }
+    private void createButton(int x, int y, int id) {
         Button b = new Button(this);
         b.setWidth(buttonSize);
         b.setHeight(buttonSize);
         b.setBackgroundColor(Color.RED);
-        b.setId( 1);
+
+        b.setId(id);
         RelativeLayout.LayoutParams rel_btn = new RelativeLayout.LayoutParams(
                 buttonSize, buttonSize);
         rel_btn.leftMargin = x;
@@ -79,9 +98,11 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
         switch (item.getItemId()) {
             case R.id.Remove:
                 Log.d(TAG, "onMenuItemClick: "+ pointSelected.getId());
+                viewModel.removeChicken(listOfChickens.get(pointSelected.getId()));
                 ((ViewGroup)(pointSelected.getParent())).removeView(pointSelected);
                 pointSelected = null;
                 Log.d(TAG, "onMenuItemClick: Chicken Removed");
+
                 return true;
 
             case R.id.FalseAlarm:

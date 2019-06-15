@@ -47,18 +47,6 @@ public class DashBoard extends AppCompatActivity {
                 myAdapter.setmData(poultryHouseViews);
             }
         });
-        /*houses = new ArrayList<>();
-        houses.add(new House(0));
-        houses.add(new House(5));
-        houses.add(new House(3));
-        houses.add(new House(7));
-        houses.add(new House(1));
-        houses.add(new House(9));
-
-        myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-        myAdapter = new RecyclerViewAdapter(this, houses);
-        myrv.setLayoutManager(new GridLayoutManager(this, 3));
-        myrv.setAdapter(myAdapter);*/
 
     }
 
@@ -162,4 +150,6 @@ public class DashBoard extends AppCompatActivity {
         }
     }
 }*/
+
+
 
