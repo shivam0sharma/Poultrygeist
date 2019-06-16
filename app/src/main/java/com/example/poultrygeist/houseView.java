@@ -2,13 +2,12 @@ package com.example.poultrygeist;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +16,8 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 
-import com.example.poultrygeist.DB.AppDatabase;
 import com.example.poultrygeist.DB.ChickenViewModel;
 import com.example.poultrygeist.DB.ModelAndViews.Chicken;
-import com.example.poultrygeist.DB.ModelAndViews.PoultryHouse;
 import com.example.poultrygeist.DB.PoultryHouseViewModel;
 import java.util.List;
 
@@ -43,10 +40,6 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
         viewModel.getChickensInAHouse(intent.getIntExtra("HouseNumber", 0), this);
 
         parentLayout = (RelativeLayout) findViewById(R.id.Map);
-//        for(int id = 0; id < listOfChickens.size(); id++) {
-//            Chicken chick = listOfChickens.get(id);
-//            createButton(chick.getX(), chick.getY(), id);
-//        }
     }
 
     public void createLocationsOnScreen(List<Chicken> chickens){
@@ -58,13 +51,12 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
     }
     private void createButton(int x, int y, int id) {
         Button b = new Button(this);
-        b.setWidth(buttonSize);
-        b.setHeight(buttonSize);
-        b.setBackgroundColor(Color.RED);
+        b.setBackgroundResource(R.drawable.chicken_button);
 
         b.setId(id);
         RelativeLayout.LayoutParams rel_btn = new RelativeLayout.LayoutParams(
                 buttonSize, buttonSize);
+
         rel_btn.leftMargin = x;
         rel_btn.topMargin = y;
         Log.d(TAG, "createButton: " + b.getId());
@@ -130,13 +122,20 @@ public class houseView extends AppCompatActivity implements PopupMenu.OnMenuItem
 
     }
 
-    public void aChicken() {
-        viewModel.AddChicken(new Chicken(0, 0, 1));
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_houseview, menu);
+        return true;
     }
 
-    public void aHouse() {
-        houseModel.AddHouse(new PoultryHouse(2,20,30));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.edit:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public int countChickens() {

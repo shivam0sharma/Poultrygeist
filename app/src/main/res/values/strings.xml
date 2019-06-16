@@ -4,4 +4,6 @@
     <string name="chickenMenu_WrongPosition">Wrong Position</string>
     <string name="chickenMenu_Cancel">Cancel</string>
     <string name="chickenMenu_Remove">Remove</string>
+    <string name="houseViewMenu_edit">Edit House</string>
+
 </resources>

@@ -9,7 +9,12 @@
         android:topLeftRadius="30dp"
         android:topRightRadius="30dp" />
 
-    <solid android:color="@color/buttonColor" />
+    <gradient
+        android:centerColor="@color/chickenButtonDark"
+        android:startColor="@color/chickenButtonLight"
+        android:endColor="@color/chickenButton"
+        android:gradientRadius="35dp"
+        android:type="radial"></gradient>
 
 
     <padding
@@ -19,7 +24,7 @@
         android:top="0dp"/>
 
     <size
-        android:height="60dp"
-        android:width="230dp" />
+        android:height="20dp"
+        android:width="20dp" />
 
 </shape>

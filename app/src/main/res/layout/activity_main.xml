@@ -20,11 +20,12 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:translationY="-100dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_marginVertical="100dp"
+            android:layout_marginHorizontal="20dp"
             app:srcCompat="@drawable/poultrygeist_log" />
 
         <Button

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#38404e</color>
-    <color name="colorPrimaryDark">#38404e</color>
+    <color name="colorPrimaryDark">#282C38</color>
+    <color name="colorPrimaryLight">#626F8A</color>
     <color name="colorAccent">#D81B60</color>
     <color name="black">#000000</color>
     <color name="buttonColor">#FFFFFF</color>
+    <color name="chickenButton">#D30808</color>
+    <color name="chickenButtonLight">#F80505</color>
+    <color name="chickenButtonDark">#830505</color>
 
 
 </resources>
