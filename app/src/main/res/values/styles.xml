@@ -8,4 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SensorDisplayTitle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="SensorDisplayData" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:fontFamily"></item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">34sp</item>
+    </style>
 </resources>

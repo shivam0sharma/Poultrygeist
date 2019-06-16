@@ -26,8 +26,83 @@
         android:minHeight="100dp"
         android:orientation="horizontal"
         android:background="@drawable/bottom_panellayout"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/Map"
         app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_border"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/temperatureTitle"
+                style="@style/SensorDisplayTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/title_temperature" />
+
+            <TextView
+                android:id="@+id/temperatureData"
+                style="@style/SensorDisplayData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="72 \u2109" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_border"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/humidityTitle"
+                style="@style/SensorDisplayTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/title_humidity" />
+
+            <TextView
+                android:id="@+id/HumidityData"
+                style="@style/SensorDisplayData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="70 \u0025" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_border"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ammoniaTitle"
+                style="@style/SensorDisplayTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/title_ammonia" />
+
+            <TextView
+                android:id="@+id/ammoniaData"
+                style="@style/SensorDisplayData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="10 \u33d9" />
+        </LinearLayout>
 
 
 

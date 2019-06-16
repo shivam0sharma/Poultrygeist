@@ -5,5 +5,9 @@
     <string name="chickenMenu_Cancel">Cancel</string>
     <string name="chickenMenu_Remove">Remove</string>
     <string name="houseViewMenu_edit">Edit House</string>
+    <string name="title_ammonia"><b>Ammonia</b></string>
+    <string name="title_temperature"><b>Temperature</b></string>
+    <string name="title_humidity"><b>Humidity</b></string>
+
 
 </resources>

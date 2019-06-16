@@ -9,6 +9,7 @@
     <color name="chickenButton">#D30808</color>
     <color name="chickenButtonLight">#F80505</color>
     <color name="chickenButtonDark">#830505</color>
+    <color name="bottomPanelBackground">#F4F3FC</color>
 
 
 </resources>
