@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/PopUpWindowTitle"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:gravity="center"
+        android:text="@string/title_addNewHouse"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/housename"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <EditText
+        android:id="@+id/housename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="@string/hint_addNewHouse"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/houseInfo"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+    <LinearLayout
+        android:id="@+id/houseInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/housename"
+        app:layout_constraintBottom_toTopOf="@id/buttons"
+        >
+
+        <EditText
+            android:id="@+id/houseLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="@string/hint_addHouseWidth"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/houseWidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="@string/hint_addHouseLength"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textAlignment="center" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/houseInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <Button
+            android:id="@+id/Cancel"
+            style="?android:selectableItemBackgroundBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_rounded_corners"
+            android:onClick="cancel"
+            android:text="@string/button_cancel"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/add"
+            android:background="@drawable/button_rounded_corners"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_add"
+            android:textColor="@color/white"
+            style="?android:selectableItemBackgroundBorderless"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

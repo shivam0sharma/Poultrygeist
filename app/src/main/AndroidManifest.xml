@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".add_House"
+            android:theme="@style/AppTheme.popupWindow"></activity>
         <activity
             android:name=".houseView"
-            android:parentActivityName=".DashBoard"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop"
+            android:parentActivityName=".DashBoard" />
         <activity android:name=".DashBoard" />
         <activity android:name=".MainActivity">
             <intent-filter>

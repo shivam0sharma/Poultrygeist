@@ -2,6 +2,7 @@ package com.example.poultrygeist;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -77,6 +78,7 @@ public class DashBoard extends AppCompatActivity {
 //
 //        // Update the myAdapter
 //        myAdapter.notifyDataSetChanged();
+        startActivity(new Intent(DashBoard.this, add_House.class));
 
         // Confirm the insertion
         Toast.makeText(this, "House Added", Toast.LENGTH_SHORT).show();

@@ -10,6 +10,10 @@
     <color name="chickenButtonLight">#F80505</color>
     <color name="chickenButtonDark">#830505</color>
     <color name="bottomPanelBackground">#F4F3FC</color>
+    <color name="popup_background">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
 
 
 </resources>

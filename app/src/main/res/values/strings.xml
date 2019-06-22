@@ -8,6 +8,16 @@
     <string name="title_ammonia"><b>Ammonia</b></string>
     <string name="title_temperature"><b>Temperature</b></string>
     <string name="title_humidity"><b>Humidity</b></string>
+    <string name="title_addNewHouse"><b>Add New House</b></string>
+    <string name="hint_addNewHouse"><b>Enter House Number</b></string>
+    <string name="button_add">Add</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="hint_addHouseLength"><b>Enter House Length</b></string>
+    <string name="hint_addHouseWidth"><b>Enter House Width</b></string>
+
+
+
+
 
 
 </resources>

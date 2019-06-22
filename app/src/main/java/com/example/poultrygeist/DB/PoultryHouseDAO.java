@@ -16,24 +16,26 @@ import java.util.List;
 public interface PoultryHouseDAO {
     @Insert
     void insertHouse(PoultryHouse house);
+
     @Delete
     void deleteHouse(PoultryHouse house);
+
     @Update
     void updateHouse(PoultryHouse house);
 
     @Query("SELECT PoultryHouse.houseId, PoultryHouse.length, PoultryHouse.width," +
             " (Select COUNT(*) from Chicken where Chicken.ChickenHouse = PoultryHouse.houseId) " +
-            "as numberOfChickens FROM PoultryHouse")
+            "as numberOfChickens FROM PoultryHouse order by PoultryHouse.houseId")
     LiveData<List<PoultryHouseView>> getALLHouses();
 
     @Query("SELECT * FROM PoultryHouse WHERE houseId = :HID")
     PoultryHouse getHouse(int HID);
+
     @Query("SELECT COUNT(*) FROM Chicken WHERE ChickenHouse = :HID")
     int getNumberOfChicken(int HID);
 
     @Query("DELETE FROM PoultryHouse")
     void deleteAllHouses();
-
 
 
 }
