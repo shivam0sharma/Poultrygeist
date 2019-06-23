@@ -14,10 +14,7 @@
     <string name="button_cancel">Cancel</string>
     <string name="hint_addHouseLength"><b>Enter House Length</b></string>
     <string name="hint_addHouseWidth"><b>Enter House Width</b></string>
-
-
-
-
+    <string name="title_RemoveHouse"><b>Remove House</b></string>
 
 
 </resources>

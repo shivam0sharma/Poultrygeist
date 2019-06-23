@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".add_House"
+        <activity android:name=".removeHouse"
             android:theme="@style/AppTheme.popupWindow"></activity>
+        <activity
+            android:name=".add_House"
+            android:theme="@style/AppTheme.popupWindow" />
         <activity
             android:name=".houseView"
             android:launchMode="singleTop"

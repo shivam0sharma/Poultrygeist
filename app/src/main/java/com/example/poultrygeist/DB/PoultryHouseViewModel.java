@@ -1,5 +1,6 @@
 package com.example.poultrygeist.DB;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
@@ -7,6 +8,8 @@ import android.os.AsyncTask;
 
 import com.example.poultrygeist.DB.ModelAndViews.PoultryHouse;
 import com.example.poultrygeist.DB.ModelAndViews.PoultryHouseView;
+import com.example.poultrygeist.add_House;
+import com.example.poultrygeist.removeHouse;
 
 import java.util.List;
 
@@ -30,12 +33,14 @@ public class PoultryHouseViewModel extends AndroidViewModel {
 
     /**
      * Removes house
-     * @param house the house object you want to delete
+     *
+     * @param hid house number
      */
-    public void removeHouse(PoultryHouse house) {
-        new deleteAsyncTask(appDatabase).execute(house);
+    public void removeHouse(int hid) {
+        new deleteAsyncTask(appDatabase).execute(hid);
     }
-    private static class deleteAsyncTask extends AsyncTask<PoultryHouse, Void, Void> {
+
+    private static class deleteAsyncTask extends AsyncTask<Integer, Void, Void> {
         private AppDatabase db;
 
         deleteAsyncTask(AppDatabase appDatabase) {
@@ -43,28 +48,70 @@ public class PoultryHouseViewModel extends AndroidViewModel {
         }
 
         @Override
-        protected Void doInBackground(final PoultryHouse... params) {
-            db.HouseInformation().deleteHouse(params[0]);
+        protected Void doInBackground(final Integer... params) {
+            db.HouseInformation().removeHouse(params[0]);
             return null;
         }
     }
 
-    public void AddHouse(PoultryHouse house) {
-        new addAsyncTask(appDatabase).execute(house);
+    public void AddHouse(PoultryHouse house, Activity activity) {
+        new addAsyncTask(appDatabase, activity).execute(house);
     }
-    private static class addAsyncTask extends AsyncTask<PoultryHouse, Void, Void> {
-        private AppDatabase db;
 
-        addAsyncTask(AppDatabase appDatabase) {
+    private static class addAsyncTask extends AsyncTask<PoultryHouse, Void, Boolean> {
+        private AppDatabase db;
+        private Activity activity;
+
+        addAsyncTask(AppDatabase appDatabase, Activity activity) {
             db = appDatabase;
+            this.activity = activity;
         }
 
         @Override
-        protected Void doInBackground(final PoultryHouse... params) {
-            db.HouseInformation().insertHouse(params[0]);
+        protected Boolean doInBackground(final PoultryHouse... params) {
+            if (!db.HouseInformation().getHouseIds().contains(params[0].getHouseId())) {
+                db.HouseInformation().insertHouse(params[0]);
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean b) {
+            if (activity != null) {
+                if (!b) {
+                    ((add_House) activity).result("House already exists. Try another number.", false);
+                } else {
+                    ((add_House) activity).result("House Successfully Added!", true);
+                }
+            }
+        }
+    }
+
+
+    public void populateSpinner(Activity activity) {
+        new populateAsync(appDatabase, activity).execute();
+    }
+
+    private static class populateAsync extends AsyncTask<Void, Void, Void> {
+        private AppDatabase db;
+        private Activity activity;
+        private List<Integer> ids;
+
+        populateAsync(AppDatabase appDatabase, Activity activity) {
+            db = appDatabase;
+            this.activity = activity;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ids = db.HouseInformation().getHouseIds();
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            ((removeHouse) activity).populateSpinner(ids);
+        }
     }
 }

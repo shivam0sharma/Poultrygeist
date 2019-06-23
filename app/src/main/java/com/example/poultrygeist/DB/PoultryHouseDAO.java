@@ -37,5 +37,11 @@ public interface PoultryHouseDAO {
     @Query("DELETE FROM PoultryHouse")
     void deleteAllHouses();
 
+    @Query("SELECT houseId FROM PoultryHouse ORDER BY houseId")
+    List<Integer> getHouseIds();
+
+    @Query("DELETE FROM PoultryHouse WHERE houseId = :HID")
+    void removeHouse(int HID);
+
 
 }

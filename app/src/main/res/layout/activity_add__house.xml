@@ -14,13 +14,13 @@
         android:gravity="center"
         android:text="@string/title_addNewHouse"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/housename"
+        app:layout_constraintBottom_toTopOf="@id/houseNumber"
         android:layout_marginTop="10dp"
 
         />
 
     <EditText
-        android:id="@+id/housename"
+        android:id="@+id/houseNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -39,12 +39,12 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/housename"
+        app:layout_constraintTop_toBottomOf="@id/houseNumber"
         app:layout_constraintBottom_toTopOf="@id/buttons"
         >
 
         <EditText
-            android:id="@+id/houseLength"
+            android:id="@+id/houseWidth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
@@ -55,7 +55,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/houseWidth"
+            android:id="@+id/houseLength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -95,6 +95,7 @@
             android:text="@string/button_add"
             android:textColor="@color/white"
             style="?android:selectableItemBackgroundBorderless"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:onClick="add"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
